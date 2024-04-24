@@ -1,15 +1,13 @@
 import './App.css';
-import Header from './Header.js';
 import InfoSection from './InfoSection.js';
+import SearchSection from './SearchSection.js';
 
 function App() {
   return (
-    <>
-    <Header />
-    <main>
+    <div className='container'>
+      <SearchSection />
       <InfoSection />
-    </main>
-    </>
+    </div>
   );
 }
 
