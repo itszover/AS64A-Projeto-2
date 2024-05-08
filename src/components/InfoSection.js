@@ -1,11 +1,13 @@
+import Card from "react-bootstrap/Card"
+
 export default function InfoSection({ cardName, cardImage, cardDescription }) {
     return (
-        <section className="info-section">
-            <h2 className="card-name">{cardName}</h2>
-            <div className="img-desc-container">
-                <img className="card-img" src={cardImage} alt={cardName} title={cardName} />
-                <p className="card-desc">{cardDescription}</p>
-            </div>
-        </section>
+        <Card className="info-section">
+            <Card.Title>{cardName}</Card.Title>
+            <Card.Body className="img-desc-container">
+                <Card.Img className="card-img" variant="left" src={cardImage} alt={cardName} title={cardName} />
+                <Card.Text className="card-desc">{cardDescription}</Card.Text>
+            </Card.Body>
+        </Card>
     )
 }

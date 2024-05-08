@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Button from 'react-bootstrap/Button'; 
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 export default function SearchSection({ setCardName, setCardImage, setCardDescription }) {
     const API_URL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
@@ -80,7 +83,10 @@ export default function SearchSection({ setCardName, setCardImage, setCardDescri
     }
 
     function handleEnterKey(event) {
-        if (event.key === 'Enter') handleSearch();
+        if (event.key === 'Enter') {
+        event.preventDefault();
+            handleSearch();
+        } 
     }
 
     function handleInput(event) {
@@ -88,16 +94,23 @@ export default function SearchSection({ setCardName, setCardImage, setCardDescri
     }
 
     return (
-        <section className='search-section'>
-            <div className='input-container'>
-                <label className='card-input-label' htmlFor='card-input' />
-                <input value={cardNameInput} onKeyDown={handleEnterKey} onChange={handleInput} name='card-name' id='card-input' type='text' placeholder='Nome da carta' />
-                <button onClick={handleSearch} className='search-button' type='button'>Pesquisar</button>
-                <small className='error-text'>{errorText}</small>
-                <select onKeyDown={handleEnterKey} onChange={handleInput} className={visibility} size={size} name='cards-result' id='cards-result'>
-                    {options.map((option, index) => (<option key={index} value={option}>{option}</option>))}
-                </select>
-            </div>
-        </section>
+            <Form>
+                <Form.Group>
+                <Form.Label htmlFor='card-input'>Nome da carta</Form.Label>
+                    <InputGroup>
+                        <Form.Control 
+                            value={cardNameInput} 
+                            onKeyDown={handleEnterKey} 
+                            onChange={handleInput} 
+                            type='text' 
+                            placeholder='Mago Negro'></Form.Control>
+                        <Button onClick={handleSearch}>Pesquisar</Button>
+                    </InputGroup>
+                    <small className='error-text'>{errorText}</small>
+                    <Form.Select onKeyDown={handleEnterKey} onChange={handleInput} className={visibility} htmlSize={size} id='cards-result'>
+                        {options.map((option, index) => (<option key={index} value={option}>{option}</option>))}
+                    </Form.Select>
+                </Form.Group>
+            </Form>
     );
 }
