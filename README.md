@@ -1,4 +1,4 @@
-# Projeto 1 de Programação Web Fullstack
+# Projeto 2 de Programação Web Fullstack
 
 ![preview](public/preview.PNG)
 
