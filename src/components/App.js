@@ -3,6 +3,7 @@ import SearchSection from './SearchSection.jsx';
 import InfoSection from './InfoSection.jsx';
 import Navbar1 from './Navbar.jsx';
 import placeholder from '../assets/placeholder.jpg';
+import CardContext from './CardContext.js';
 import { useState } from 'react';
 
 function App() {
@@ -11,15 +12,15 @@ function App() {
   const [cardDescription, setCardDescription] = useState('Embora sofram sempre em silêncio, eles juram inevitavelmente revoltarem-se.');
 
   return (
-    <>
+    <CardContext.Provider value={{ cardName, setCardName, cardImage, setCardImage, cardDescription, setCardDescription }}>
     <header>
       <Navbar1 />
     </header>
     <main className='container-xxl'>
-        <SearchSection setCardName={setCardName} setCardImage={setCardImage} setCardDescription={setCardDescription} />
-        <InfoSection cardName={cardName} cardImage={cardImage} cardDescription={cardDescription} />
+        <SearchSection />
+        <InfoSection />
     </main>
-    </>
+    </CardContext.Provider>
   );
 }
 

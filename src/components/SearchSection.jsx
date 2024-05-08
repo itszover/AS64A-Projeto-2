@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useContext } from 'react';
+import CardContext from './CardContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,7 +8,8 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 
-export default function SearchSection({ setCardName, setCardImage, setCardDescription }) {
+export default function SearchSection() {
+    const { setCardName, setCardImage, setCardDescription } = useContext(CardContext);
     const API_URL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
     const MAX_OPTIONS = 7;
     const [cardNameInput, setCardNameInput] = useState('');

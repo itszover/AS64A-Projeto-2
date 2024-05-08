@@ -1,11 +1,14 @@
 import { memo } from 'react';
+import { useContext } from 'react';
+import CardContext from './CardContext';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 
 
-function InfoSection({ cardName, cardImage, cardDescription }) {
+function InfoSection() {
+    const { cardName, cardImage, cardDescription } = useContext(CardContext);
     return (
         <Container className='border p-3'>
             <Row>
